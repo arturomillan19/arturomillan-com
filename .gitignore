@@ -1,0 +1,11 @@
+# Raw/original source files (kept locally, not needed in the repo)
+*.zip
+WhatsApp Image*.jpeg
+WhatsApp Video*.mp4
+copy_5FA27D9D*.MP4
+_frames/
+_originals/
+
+# OS junk
+.DS_Store
+Thumbs.db
