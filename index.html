@@ -363,6 +363,21 @@
   .svc h4{ font-size:16px; font-weight:600; }
   .svc p{ font-size:13.5px; color:var(--ink-soft); line-height:1.45; }
 
+  /* ============ MOST-REQUESTED SPOTLIGHT ============ */
+  .top-requested-head{ margin-top:clamp(44px,6vw,64px); margin-bottom:22px; }
+  .top-requested-head .eyebrow{ color:var(--forest); }
+  .top-requested-head h3{ font-size:clamp(20px,2.2vw,26px); margin-top:8px; }
+  .top-requested{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:16px;
+  }
+  .top-requested .frame-media{ aspect-ratio:5/4; }
+  .top-requested .frame-media img{ width:100%; height:100%; object-fit:cover; }
+  .top-requested .frame-plate{ display:block; }
+  .top-requested .frame-plate h4{ font-size:16.5px; font-weight:600; margin-top:6px; font-family:'Source Serif 4',serif; }
+  .top-requested .frame-plate p{ font-size:13.5px; color:var(--ink-soft); margin-top:4px; }
+
   /* ============ GALLERY — framed-plate presentation ============ */
   .gallery-wrap{ position:relative; }
 
@@ -595,6 +610,7 @@
     .safety-grid{ grid-template-columns:1fr; }
     .safety-photo{ aspect-ratio:16/10; }
     .services-grid{ grid-template-columns:repeat(2,1fr); }
+    .top-requested{ grid-template-columns:1fr; max-width:420px; margin-inline:auto; }
     .process{ grid-template-columns:1fr; }
     .two-col{ grid-template-columns:1fr; }
     .showcase .before-after{ grid-template-columns:1fr; }
@@ -815,6 +831,34 @@
       <div class="svc"><span class="svc-icon"><svg><use href="#s-adoquin"/></svg></span><h4>Adoquín</h4><p>Andadores, patios y accesos vehiculares con base bien compactada.</p></div>
       <div class="svc"><span class="svc-icon"><svg><use href="#s-pasto"/></svg></span><h4>Pasto Artificial</h4><p>Verde todo el año, sin el consumo de agua del pasto natural.</p></div>
     </div>
+
+    <div class="top-requested-head reveal">
+      <p class="eyebrow">Lo más solicitado</p>
+      <h3>Tres servicios que resuelven la mayoría de las llamadas.</h3>
+    </div>
+    <div class="top-requested reveal">
+      <div class="frame">
+        <div class="frame-media"><img src="assets/img/gallery-trepa-espalda.jpg" alt="Poda de palma en altura con cuerda y arnés." loading="lazy"></div>
+        <div class="frame-plate">
+          <h4>Poda de Palmas</h4>
+          <p>El servicio que más pedimos hacer — altura, riesgo y técnica de rappel.</p>
+        </div>
+      </div>
+      <div class="frame">
+        <div class="frame-media"><img src="assets/img/video-poster.jpg" alt="Limpieza general de patio, antes y después." loading="lazy"></div>
+        <div class="frame-plate">
+          <h4>Limpieza General</h4>
+          <p>Maleza, hojarasca y escombro fuera — tu jardín listo de nuevo.</p>
+        </div>
+      </div>
+      <div class="frame">
+        <div class="frame-media"><img src="assets/img/gallery-alberca.jpg" alt="Jardín residencial mantenido, con pasto sintético y adoquín." loading="lazy"></div>
+        <div class="frame-plate">
+          <h4>Mantenimiento Residencial y Comercial</h4>
+          <p>Visitas recurrentes para que tu propiedad se vea siempre así.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -884,10 +928,8 @@
 
     <div class="carousel-track reveal" id="carousel-track">
       <div class="frame"><div class="frame-media"><img src="assets/img/gallery-retrato-campo.jpg" alt="Arturo Millán en campo con cuerda y motosierra, listo para trabajar." loading="lazy"></div><div class="frame-plate"><p class="eyebrow">En campo</p></div></div>
-      <div class="frame"><div class="frame-media"><img src="assets/img/gallery-trepa-espalda.jpg" alt="Trepa por tronco de palma con cuerda y arnés, vista trasera." loading="lazy"></div><div class="frame-plate"><p class="eyebrow">Técnica de rappel</p></div></div>
       <div class="frame"><div class="frame-media"><img src="assets/img/gallery-detalle-corte.jpg" alt="Corte de detalle en la base de las hojas de palma." loading="lazy"></div><div class="frame-plate"><p class="eyebrow">Corte de detalle</p></div></div>
       <div class="frame"><div class="frame-media"><img src="assets/img/gallery-comercial.jpg" alt="Poda de palmeras en propiedad comercial." loading="lazy"></div><div class="frame-plate"><p class="eyebrow">Proyecto comercial</p></div></div>
-      <div class="frame"><div class="frame-media"><img src="assets/img/gallery-alberca.jpg" alt="Área de alberca con pasto sintético entre adoquín." loading="lazy"></div><div class="frame-plate"><p class="eyebrow">Alberca</p></div></div>
       <div class="frame"><div class="frame-media"><img src="assets/img/service-riego.jpg" alt="Aspersor de riego en funcionamiento." loading="lazy"></div><div class="frame-plate"><p class="eyebrow">Riego</p></div></div>
       <div class="frame"><div class="frame-media"><img src="assets/img/service-grava.jpg" alt="Esquina de jardín con grava blanca y pasto sintético." loading="lazy"></div><div class="frame-plate"><p class="eyebrow">Grava</p></div></div>
       <div class="frame"><div class="frame-media"><img src="assets/img/gallery-palmas-cielo.jpg" alt="Vista hacia arriba de varias palmeras altas contra el cielo." loading="lazy"></div><div class="frame-plate"><p class="eyebrow">Palmas de gran altura</p></div></div>
