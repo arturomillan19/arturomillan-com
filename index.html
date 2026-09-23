@@ -140,6 +140,19 @@
     white-space:nowrap;
     display:inline-flex; align-items:center; gap:5px;
   }
+  .lang-toggle{
+    display:inline-flex; align-items:center; gap:2px;
+    background:var(--forest-tint); border:1px solid var(--line);
+    border-radius:999px; padding:3px; flex:none;
+  }
+  .lang-toggle button{
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; font-weight:600;
+    letter-spacing:.04em;
+    padding:6px 11px; border-radius:999px; border:none; cursor:pointer;
+    background:transparent; color:var(--ink-soft);
+    transition:background .15s ease, color .15s ease;
+  }
+  .lang-toggle button.is-active{ background:var(--forest); color:var(--cream); }
 
   /* ============ BUTTONS ============ */
   .btn{
@@ -791,9 +804,12 @@
       <span>AMV Servicios Exteriores<small>San Carlos · Guaymas</small></span>
     </a>
     <div class="head-actions">
-      <span class="badge-lang"><svg width="13" height="13"><use href="#i-globe"/></svg>Hablamos inglés</span>
+      <div class="lang-toggle" role="group" aria-label="Idioma / Language">
+        <button type="button" id="lang-es" class="is-active" aria-pressed="true">ES</button>
+        <button type="button" id="lang-en" aria-pressed="false">EN</button>
+      </div>
       <a class="btn btn-dark" href="#cuestionario" data-scroll>
-        <svg><use href="#i-whatsapp" style="color:#8FE3AC"/></svg> Escríbenos
+        <svg><use href="#i-whatsapp" style="color:#8FE3AC"/></svg> <span data-i18n="navCta">Escríbenos</span>
       </a>
     </div>
   </div>
@@ -804,14 +820,14 @@
   <img src="assets/img/hero-safety.jpg" alt="Poda de palma de gran altura con equipo de rappel, entre otras tres palmeras contra un cielo azul intenso." fetchpriority="high">
   <div class="hero-content">
     <div class="wrap">
-      <p class="eyebrow">Poda de árboles y palmas · San Carlos &amp; Guaymas, Son.</p>
-      <h1>Especialistas en <em>poda de árboles y palmas</em>, con la seguridad que exige la altura.</h1>
-      <p class="hero-sub">3 años de experiencia en paisajismo residencial y comercial, y trepa comercial en Tucson y Phoenix, Arizona, antes de volver a Sonora. Hoy pongo esa experiencia al servicio de tu jardín — con arnés, casco y técnica, no con escalera y machete.</p>
+      <p class="eyebrow" data-i18n="heroEyebrow">Poda de árboles y palmas · San Carlos &amp; Guaymas, Son.</p>
+      <h1 data-i18n-html="heroH1">Especialistas en <em>poda de árboles y palmas</em>, con la seguridad que exige la altura.</h1>
+      <p class="hero-sub" data-i18n="heroSub">3 años de experiencia en paisajismo residencial y comercial, y trepa comercial en Tucson y Phoenix, Arizona, antes de volver a Sonora. Hoy pongo esa experiencia al servicio de tu jardín — con arnés, casco y técnica, no con escalera y machete.</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#cuestionario" data-scroll>
-          <svg><use href="#i-whatsapp"/></svg> Cuéntame qué necesitas
+          <svg><use href="#i-whatsapp"/></svg> <span data-i18n="heroCtaPrimary">Cuéntame qué necesitas</span>
         </a>
-        <a class="btn btn-ghost-light" href="#servicios" data-scroll>Ver todos los servicios</a>
+        <a class="btn btn-ghost-light" href="#servicios" data-scroll data-i18n="heroCtaGhost">Ver todos los servicios</a>
       </div>
     </div>
   </div>
@@ -819,9 +835,9 @@
 
 <div class="credentials">
   <div class="wrap">
-    <span class="cred-item"><svg><use href="#i-badge"/></svg><strong>Trepa comercial&nbsp;</strong>en Tucson y Phoenix, Arizona</span>
-    <span class="cred-item"><svg><use href="#i-rope"/></svg><strong>Equipo de rappel&nbsp;</strong>para podas de gran altura</span>
-    <span class="cred-item"><svg><use href="#i-globe"/></svg><strong>Servicio bilingüe&nbsp;</strong>para la comunidad de San Carlos</span>
+    <span class="cred-item"><svg><use href="#i-badge"/></svg><span data-i18n-html="cred1">&nbsp;</span></span>
+    <span class="cred-item"><svg><use href="#i-rope"/></svg><span data-i18n-html="cred2">&nbsp;</span></span>
+    <span class="cred-item"><svg><use href="#i-globe"/></svg><span data-i18n-html="cred3">&nbsp;</span></span>
   </div>
 </div>
 
@@ -830,45 +846,45 @@
   <svg class="ring-mark" width="460" height="460" style="right:-160px; top:40px;" viewBox="0 0 460 460"><circle cx="230" cy="230" r="228" fill="none" stroke="#0F3D2E" stroke-width="1"/><circle cx="230" cy="230" r="190" fill="none" stroke="#0F3D2E" stroke-width="1" stroke-dasharray="2 6"/><circle cx="230" cy="230" r="150" fill="none" stroke="#0F3D2E" stroke-width="1"/></svg>
   <div class="wrap">
     <div class="sec-head reveal">
-      <p class="eyebrow">Quién cuida tu jardín</p>
-      <h2>Un camino que empezó podando árboles en Arizona.</h2>
+      <p class="eyebrow" data-i18n="storyEyebrow">Quién cuida tu jardín</p>
+      <h2 data-i18n="storyH2">Un camino que empezó podando árboles en Arizona.</h2>
     </div>
     <div class="story-grid">
       <div class="story-photo reveal">
         <img src="assets/img/portrait.jpg" alt="Arturo Millán, fundador de AMV Servicios Exteriores." loading="lazy">
       </div>
       <div class="reveal">
-        <p class="story-bio">Soy <strong>Arturo Millán</strong>. Empecé en Tucson, Arizona, trabajando para <strong>Desert Rain Landscaping Services</strong>. Ahí aprendí las bases del oficio, pero fue después, trabajando con <strong>AJ Raglow de Vivan Los Árboles</strong>, donde gané la mayor parte de mi experiencia en trepa comercial: subir palmas y árboles de gran altura con arnés y técnica, no con escalera y machete.</p>
-        <p class="story-bio">Con esa experiencia me moví a Phoenix, donde seguí trepando ya bajo mi propia empresa, <strong>The Hive Outdoor Services</strong>, junto con un grupo de socios — atendiendo jardines que no aceptaban un trabajo a medias.</p>
-        <p class="story-bio">Hoy vivo entre <strong>San Carlos y Guaymas</strong> y pongo esos años de experiencia al servicio de tu casa — atendiendo en español e inglés a la comunidad de la zona, y tratando cada patio como si fuera el mío.</p>
+        <p class="story-bio" data-i18n-html="bio1">Soy <strong>Arturo Millán</strong>. Empecé en Tucson, Arizona, trabajando para <strong>Desert Rain Landscaping Services</strong>. Ahí aprendí las bases del oficio, pero fue después, trabajando con <strong>AJ Raglow de Vivan Los Árboles</strong>, donde gané la mayor parte de mi experiencia en trepa comercial: subir palmas y árboles de gran altura con arnés y técnica, no con escalera y machete.</p>
+        <p class="story-bio" data-i18n-html="bio2">Con esa experiencia me moví a Phoenix, donde seguí trepando ya bajo mi propia empresa, <strong>The Hive Outdoor Services</strong>, junto con un grupo de socios — atendiendo jardines que no aceptaban un trabajo a medias.</p>
+        <p class="story-bio" data-i18n-html="bio3">Hoy vivo entre <strong>San Carlos y Guaymas</strong> y pongo esos años de experiencia al servicio de tu casa — atendiendo en español e inglés a la comunidad de la zona, y tratando cada patio como si fuera el mío.</p>
 
         <div class="timeline">
           <div class="tl-item">
-            <div class="tl-loc">Tucson, AZ<span>Primer paso</span></div>
+            <div class="tl-loc">Tucson, AZ<span data-i18n="tl1span">Primer paso</span></div>
             <div class="tl-body">
               <h4>Desert Rain Landscaping Services</h4>
-              <p>Las bases del oficio: mantenimiento de jardines y primer contacto con el trabajo en altura.</p>
+              <p data-i18n="tl1p">Las bases del oficio: mantenimiento de jardines y primer contacto con el trabajo en altura.</p>
             </div>
           </div>
           <div class="tl-item">
-            <div class="tl-loc">Tucson, AZ<span>Trepa comercial</span></div>
+            <div class="tl-loc">Tucson, AZ<span data-i18n="tl2span">Trepa comercial</span></div>
             <div class="tl-body">
               <h4>AJ Raglow — Vivan Los Árboles</h4>
-              <p>Donde gané la mayor parte de mi experiencia en trepa comercial y poda de altura con equipo de rappel.</p>
+              <p data-i18n="tl2p">Donde gané la mayor parte de mi experiencia en trepa comercial y poda de altura con equipo de rappel.</p>
             </div>
           </div>
           <div class="tl-item">
-            <div class="tl-loc">Phoenix, AZ<span>Mi empresa</span></div>
+            <div class="tl-loc">Phoenix, AZ<span data-i18n="tl3span">Mi empresa</span></div>
             <div class="tl-body">
               <h4>The Hive Outdoor Services</h4>
-              <p>Mi propia empresa, con un grupo de socios — poda de altura y jardinería para clientes exigentes.</p>
+              <p data-i18n="tl3p">Mi propia empresa, con un grupo de socios — poda de altura y jardinería para clientes exigentes.</p>
             </div>
           </div>
           <div class="tl-item">
-            <div class="tl-loc">San Carlos &amp; Guaymas<span>Hoy</span></div>
+            <div class="tl-loc">San Carlos &amp; Guaymas<span data-i18n="tl4span">Hoy</span></div>
             <div class="tl-body">
-              <h4>De regreso a casa, con esa misma experiencia</h4>
-              <p>Servicio bilingüe para familias mexicanas y para la comunidad americana de la región.</p>
+              <h4 data-i18n="tl4h4">De regreso a casa, con esa misma experiencia</h4>
+              <p data-i18n="tl4p">Servicio bilingüe para familias mexicanas y para la comunidad americana de la región.</p>
             </div>
           </div>
         </div>
@@ -884,20 +900,20 @@
       <img src="assets/img/safety-secondary.jpg" alt="Poda de palmas en altura con equipo completo de rappel, dos palmeras trabajadas simultáneamente." loading="lazy">
     </div>
     <div class="reveal">
-      <p class="eyebrow">Poda segura, no arriesgada</p>
-      <h2 style="font-size:clamp(26px,3.4vw,38px); margin-top:10px;">Subir a una palma de 12 metros no es cosa de escalera y machete.</h2>
+      <p class="eyebrow" data-i18n="safetyEyebrow">Poda segura, no arriesgada</p>
+      <h2 style="font-size:clamp(26px,3.4vw,38px); margin-top:10px;" data-i18n="safetyH2">Subir a una palma de 12 metros no es cosa de escalera y machete.</h2>
       <div class="safety-list">
         <div class="safety-row">
           <svg><use href="#i-rope"/></svg>
-          <div><h4>Equipo de rappel profesional</h4><p>Arnés, casco, cuerdas dinámicas y anclajes revisados en cada subida — el mismo equipo que usé en años de trepa comercial en Arizona.</p></div>
+          <div><h4 data-i18n="safety1h4">Equipo de rappel profesional</h4><p data-i18n="safety1p">Arnés, casco, cuerdas dinámicas y anclajes revisados en cada subida — el mismo equipo que usé en años de trepa comercial en Arizona.</p></div>
         </div>
         <div class="safety-row">
           <svg><use href="#i-leaf"/></svg>
-          <div><h4>Cortes que cuidan la salud del árbol</h4><p>Sabemos dónde y cómo cortar para que el árbol cicatrice bien, no cortes a ciegas que lo debilitan o lo matan.</p></div>
+          <div><h4 data-i18n="safety2h4">Cortes que cuidan la salud del árbol</h4><p data-i18n="safety2p">Sabemos dónde y cómo cortar para que el árbol cicatrice bien, no cortes a ciegas que lo debilitan o lo matan.</p></div>
         </div>
         <div class="safety-row">
           <svg><use href="#i-shield"/></svg>
-          <div><h4>Cuidado de lo que rodea al árbol</h4><p>Techos, cableado, alberca o barda — planeamos la caída de cada rama antes de cortarla.</p></div>
+          <div><h4 data-i18n="safety3h4">Cuidado de lo que rodea al árbol</h4><p data-i18n="safety3p">Techos, cableado, alberca o barda — planeamos la caída de cada rama antes de cortarla.</p></div>
         </div>
       </div>
     </div>
@@ -908,57 +924,57 @@
 <section id="servicios">
   <div class="wrap">
     <div class="sec-head reveal">
-      <p class="eyebrow">Lo que hacemos</p>
-      <h2>Un solo equipo para todo tu exterior.</h2>
-      <p>La poda de árboles y palmas es nuestra especialidad, y el mantenimiento residencial y comercial es de lo más pedido — resolvemos el resto de tu jardín con ese mismo nivel de cuidado.</p>
+      <p class="eyebrow" data-i18n="servicesEyebrow">Lo que hacemos</p>
+      <h2 data-i18n="servicesH2">Un solo equipo para todo tu exterior.</h2>
+      <p data-i18n="servicesIntro">La poda de árboles y palmas es nuestra especialidad, y el mantenimiento residencial y comercial es de lo más pedido — resolvemos el resto de tu jardín con ese mismo nivel de cuidado.</p>
     </div>
 
     <div class="featured-svc reveal" data-service="Poda de Árboles y Palmas" role="button" tabindex="0">
       <img src="assets/img/featured-poda.jpg" alt="Poda de palma al atardecer en Tucson, Arizona, con equipo completo de rappel." loading="lazy">
       <div class="featured-svc-body">
-        <p class="eyebrow">Nuestra especialidad</p>
-        <h3>Poda de Árboles y Palmas</h3>
-        <p>Poda de formación, poda de riesgo y control de altura en palmas y árboles de cualquier tamaño — con técnica de rappel cuando la altura lo exige.</p>
-        <span class="svc-tap-hint">Toca para cotizar este servicio</span>
+        <p class="eyebrow" data-i18n="featEyebrow">Nuestra especialidad</p>
+        <h3 data-i18n="featH3">Poda de Árboles y Palmas</h3>
+        <p data-i18n="featP">Poda de formación, poda de riesgo y control de altura en palmas y árboles de cualquier tamaño — con técnica de rappel cuando la altura lo exige.</p>
+        <span class="svc-tap-hint" data-i18n="featTapHint">Toca para cotizar este servicio</span>
       </div>
     </div>
 
     <div class="services-grid reveal">
-      <div class="svc" data-service="Mantenimiento Residencial y Comercial" role="button" tabindex="0"><span class="svc-icon"><svg><use href="#s-mantenimiento"/></svg></span><h4>Mantenimiento Residencial y Comercial</h4><p>Visitas recurrentes para mantener tu jardín o negocio siempre en orden.</p></div>
-      <div class="svc" data-service="Poda de Arbustos" role="button" tabindex="0"><span class="svc-icon"><svg><use href="#s-shrub"/></svg></span><h4>Poda de Arbustos</h4><p>Formas limpias y parejas, mantenimiento regular o diseño desde cero.</p></div>
-      <div class="svc" data-service="Sistemas de Riego" role="button" tabindex="0"><span class="svc-icon"><svg><use href="#s-riego"/></svg></span><h4>Sistemas de Riego</h4><p>Instalación y reparación de aspersores y goteo para clima desértico.</p></div>
-      <div class="svc" data-service="Remoción de Árboles" role="button" tabindex="0"><span class="svc-icon"><svg><use href="#s-removal"/></svg></span><h4>Remoción de Árboles</h4><p>Retiro completo y seguro, incluyendo tocón, en espacios reducidos.</p></div>
-      <div class="svc" data-service="Limpieza General" role="button" tabindex="0"><span class="svc-icon"><svg><use href="#s-limpieza"/></svg></span><h4>Limpieza General</h4><p>Retiro de maleza, hojarasca y escombro — tu jardín listo de nuevo.</p></div>
-      <div class="svc" data-service="Plantaciones" role="button" tabindex="0"><span class="svc-icon"><svg><use href="#s-plant"/></svg></span><h4>Plantaciones</h4><p>Selección de especies que sí resisten el calor de Guaymas y San Carlos.</p></div>
-      <div class="svc" data-service="Grava" role="button" tabindex="0"><span class="svc-icon"><svg><use href="#s-grava"/></svg></span><h4>Grava</h4><p>Grava decorativa y geotextil para zonas de bajo mantenimiento.</p></div>
-      <div class="svc" data-service="Adoquín" role="button" tabindex="0"><span class="svc-icon"><svg><use href="#s-adoquin"/></svg></span><h4>Adoquín</h4><p>Andadores, patios y accesos vehiculares con base bien compactada.</p></div>
-      <div class="svc" data-service="Pasto Artificial" role="button" tabindex="0"><span class="svc-icon"><svg><use href="#s-pasto"/></svg></span><h4>Pasto Artificial</h4><p>Verde todo el año, sin el consumo de agua del pasto natural.</p></div>
+      <div class="svc" data-service="Mantenimiento Residencial y Comercial" role="button" tabindex="0"><span class="svc-icon"><svg><use href="#s-mantenimiento"/></svg></span><h4 data-i18n="svc1h4">Mantenimiento Residencial y Comercial</h4><p data-i18n="svc1p">Visitas recurrentes para mantener tu jardín o negocio siempre en orden.</p></div>
+      <div class="svc" data-service="Poda de Arbustos" role="button" tabindex="0"><span class="svc-icon"><svg><use href="#s-shrub"/></svg></span><h4 data-i18n="svc2h4">Poda de Arbustos</h4><p data-i18n="svc2p">Formas limpias y parejas, mantenimiento regular o diseño desde cero.</p></div>
+      <div class="svc" data-service="Sistemas de Riego" role="button" tabindex="0"><span class="svc-icon"><svg><use href="#s-riego"/></svg></span><h4 data-i18n="svc3h4">Sistemas de Riego</h4><p data-i18n="svc3p">Instalación y reparación de aspersores y goteo para clima desértico.</p></div>
+      <div class="svc" data-service="Remoción de Árboles" role="button" tabindex="0"><span class="svc-icon"><svg><use href="#s-removal"/></svg></span><h4 data-i18n="svc4h4">Remoción de Árboles</h4><p data-i18n="svc4p">Retiro completo y seguro, incluyendo tocón, en espacios reducidos.</p></div>
+      <div class="svc" data-service="Limpieza General" role="button" tabindex="0"><span class="svc-icon"><svg><use href="#s-limpieza"/></svg></span><h4 data-i18n="svc5h4">Limpieza General</h4><p data-i18n="svc5p">Retiro de maleza, hojarasca y escombro — tu jardín listo de nuevo.</p></div>
+      <div class="svc" data-service="Plantaciones" role="button" tabindex="0"><span class="svc-icon"><svg><use href="#s-plant"/></svg></span><h4 data-i18n="svc6h4">Plantaciones</h4><p data-i18n="svc6p">Selección de especies que sí resisten el calor de Guaymas y San Carlos.</p></div>
+      <div class="svc" data-service="Grava" role="button" tabindex="0"><span class="svc-icon"><svg><use href="#s-grava"/></svg></span><h4 data-i18n="svc7h4">Grava</h4><p data-i18n="svc7p">Grava decorativa y geotextil para zonas de bajo mantenimiento.</p></div>
+      <div class="svc" data-service="Adoquín" role="button" tabindex="0"><span class="svc-icon"><svg><use href="#s-adoquin"/></svg></span><h4 data-i18n="svc8h4">Adoquín</h4><p data-i18n="svc8p">Andadores, patios y accesos vehiculares con base bien compactada.</p></div>
+      <div class="svc" data-service="Pasto Artificial" role="button" tabindex="0"><span class="svc-icon"><svg><use href="#s-pasto"/></svg></span><h4 data-i18n="svc9h4">Pasto Artificial</h4><p data-i18n="svc9p">Verde todo el año, sin el consumo de agua del pasto natural.</p></div>
     </div>
 
     <div class="top-requested-head reveal">
-      <p class="eyebrow">Lo más solicitado</p>
-      <h3>Tres servicios que resuelven la mayoría de las llamadas.</h3>
+      <p class="eyebrow" data-i18n="topReqEyebrow">Lo más solicitado</p>
+      <h3 data-i18n="topReqH3">Tres servicios que resuelven la mayoría de las llamadas.</h3>
     </div>
     <div class="top-requested reveal">
       <div class="frame" data-service="Poda de Árboles y Palmas" role="button" tabindex="0">
         <div class="frame-media"><img src="assets/img/gallery-trepa-espalda.jpg" alt="Poda de palma en altura con cuerda y arnés." loading="lazy"></div>
         <div class="frame-plate">
-          <h4>Poda de Palmas</h4>
-          <p>El servicio que más pedimos hacer — altura, riesgo y técnica de rappel.</p>
+          <h4 data-i18n="top1h4">Poda de Palmas</h4>
+          <p data-i18n="top1p">El servicio que más pedimos hacer — altura, riesgo y técnica de rappel.</p>
         </div>
       </div>
       <div class="frame" data-service="Limpieza General" role="button" tabindex="0">
         <div class="frame-media"><img src="assets/img/video-poster.jpg" alt="Limpieza general de patio, antes y después." loading="lazy"></div>
         <div class="frame-plate">
-          <h4>Limpieza General</h4>
-          <p>Maleza, hojarasca y escombro fuera — tu jardín listo de nuevo.</p>
+          <h4 data-i18n="top2h4">Limpieza General</h4>
+          <p data-i18n="top2p">Maleza, hojarasca y escombro fuera — tu jardín listo de nuevo.</p>
         </div>
       </div>
       <div class="frame" data-service="Mantenimiento Residencial y Comercial" role="button" tabindex="0">
         <div class="frame-media"><img src="assets/img/gallery-alberca.jpg" alt="Jardín residencial mantenido, con pasto sintético y adoquín." loading="lazy"></div>
         <div class="frame-plate">
-          <h4>Mantenimiento Residencial y Comercial</h4>
-          <p>Visitas recurrentes para que tu propiedad se vea siempre así.</p>
+          <h4 data-i18n="top3h4">Mantenimiento Residencial y Comercial</h4>
+          <p data-i18n="top3p">Visitas recurrentes para que tu propiedad se vea siempre así.</p>
         </div>
       </div>
     </div>
@@ -969,8 +985,8 @@
 <section id="trabajos">
   <div class="wrap gallery-wrap">
     <div class="sec-head reveal">
-      <p class="eyebrow">Trabajo real</p>
-      <h2>Antes y después habla más que cualquier promesa.</h2>
+      <p class="eyebrow" data-i18n="galleryEyebrow">Trabajo real</p>
+      <h2 data-i18n="galleryH2">Antes y después habla más que cualquier promesa.</h2>
     </div>
 
     <div class="frame showcase reveal">
@@ -985,57 +1001,57 @@
         </div>
       </div>
       <div class="frame-plate">
-        <div><p class="eyebrow">Poda real, en video</p><p>Trepa y poda de palma al atardecer, y una limpieza general de principio a fin.</p></div>
+        <div><p class="eyebrow" data-i18n="videoPlateEyebrow">Poda real, en video</p><p data-i18n="videoPlateP">Trepa y poda de palma al atardecer, y una limpieza general de principio a fin.</p></div>
       </div>
     </div>
 
     <div class="frame showcase reveal">
       <div class="before-after">
         <div class="ba-shot">
-          <span class="ba-tag mono">Antes</span>
+          <span class="ba-tag mono" data-i18n="tagAntes">Antes</span>
           <img src="assets/img/service-adoquin-antes.jpg" alt="Patio de tierra antes de instalar adoquín, junto a ventanas en arco." loading="lazy">
         </div>
         <div class="ba-shot">
-          <span class="ba-tag mono">Después</span>
+          <span class="ba-tag mono" data-i18n="tagDespues">Después</span>
           <img src="assets/img/service-adoquin-despues.jpg" alt="Mismo patio terminado con adoquín gris instalado." loading="lazy">
         </div>
       </div>
       <div class="frame-plate">
-        <div><p class="eyebrow">Adoquín</p><p>De tierra suelta a un patio terminado, listo para usarse.</p></div>
+        <div><p class="eyebrow" data-i18n="ba1Eyebrow">Adoquín</p><p data-i18n="ba1P">De tierra suelta a un patio terminado, listo para usarse.</p></div>
       </div>
     </div>
 
     <div class="frame showcase reveal">
       <div class="before-after">
         <div class="ba-shot">
-          <span class="ba-tag mono">Antes</span>
+          <span class="ba-tag mono" data-i18n="tagAntes">Antes</span>
           <img src="assets/img/gallery-patio-dia.jpg" alt="Patio con pasto natural y hojarasca, de día." loading="lazy">
         </div>
         <div class="ba-shot">
-          <span class="ba-tag mono">Después</span>
+          <span class="ba-tag mono" data-i18n="tagDespues">Después</span>
           <img src="assets/img/gallery-patio-noche.jpg" alt="Mismo patio con pasto sintético e iluminación de noche." loading="lazy">
         </div>
       </div>
       <div class="frame-plate">
-        <div><p class="eyebrow">Pasto artificial</p><p>De pasto natural irregular a un verde parejo, todo el año.</p></div>
+        <div><p class="eyebrow" data-i18n="ba2Eyebrow">Pasto artificial</p><p data-i18n="ba2P">De pasto natural irregular a un verde parejo, todo el año.</p></div>
       </div>
     </div>
 
     <div class="carousel-head reveal">
-      <p class="eyebrow" style="margin:0;">Más proyectos</p>
+      <p class="eyebrow" style="margin:0;" data-i18n="carouselMore">Más proyectos</p>
       <div class="carousel-arrows">
-        <button type="button" class="carousel-arrow" id="car-prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M15 5 8 12l7 7"/></svg></button>
-        <button type="button" class="carousel-arrow" id="car-next" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></svg></button>
+        <button type="button" class="carousel-arrow" id="car-prev" data-i18n-aria="ariaPrev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M15 5 8 12l7 7"/></svg></button>
+        <button type="button" class="carousel-arrow" id="car-next" data-i18n-aria="ariaNext" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></svg></button>
       </div>
     </div>
 
     <div class="carousel-track reveal" id="carousel-track">
-      <div class="frame"><div class="frame-media"><img src="assets/img/gallery-retrato-campo.jpg" alt="Arturo Millán en campo con cuerda y motosierra, listo para trabajar." loading="lazy"></div><div class="frame-plate"><p class="eyebrow">En campo</p></div></div>
-      <div class="frame"><div class="frame-media"><img src="assets/img/gallery-detalle-corte.jpg" alt="Corte de detalle en la base de las hojas de palma." loading="lazy"></div><div class="frame-plate"><p class="eyebrow">Corte de detalle</p></div></div>
-      <div class="frame"><div class="frame-media"><img src="assets/img/gallery-comercial.jpg" alt="Poda de palmeras en propiedad comercial." loading="lazy"></div><div class="frame-plate"><p class="eyebrow">Proyecto comercial</p></div></div>
-      <div class="frame"><div class="frame-media"><img src="assets/img/service-riego.jpg" alt="Aspersor de riego en funcionamiento." loading="lazy"></div><div class="frame-plate"><p class="eyebrow">Riego</p></div></div>
-      <div class="frame"><div class="frame-media"><img src="assets/img/service-grava.jpg" alt="Esquina de jardín con grava blanca y pasto sintético." loading="lazy"></div><div class="frame-plate"><p class="eyebrow">Grava</p></div></div>
-      <div class="frame"><div class="frame-media"><img src="assets/img/gallery-palmas-cielo.jpg" alt="Vista hacia arriba de varias palmeras altas contra el cielo." loading="lazy"></div><div class="frame-plate"><p class="eyebrow">Palmas de gran altura</p></div></div>
+      <div class="frame"><div class="frame-media"><img src="assets/img/gallery-retrato-campo.jpg" alt="Arturo Millán en campo con cuerda y motosierra, listo para trabajar." loading="lazy"></div><div class="frame-plate"><p class="eyebrow" data-i18n="car1">En campo</p></div></div>
+      <div class="frame"><div class="frame-media"><img src="assets/img/gallery-detalle-corte.jpg" alt="Corte de detalle en la base de las hojas de palma." loading="lazy"></div><div class="frame-plate"><p class="eyebrow" data-i18n="car2">Corte de detalle</p></div></div>
+      <div class="frame"><div class="frame-media"><img src="assets/img/gallery-comercial.jpg" alt="Poda de palmeras en propiedad comercial." loading="lazy"></div><div class="frame-plate"><p class="eyebrow" data-i18n="car3">Proyecto comercial</p></div></div>
+      <div class="frame"><div class="frame-media"><img src="assets/img/service-riego.jpg" alt="Aspersor de riego en funcionamiento." loading="lazy"></div><div class="frame-plate"><p class="eyebrow" data-i18n="car4">Riego</p></div></div>
+      <div class="frame"><div class="frame-media"><img src="assets/img/service-grava.jpg" alt="Esquina de jardín con grava blanca y pasto sintético." loading="lazy"></div><div class="frame-plate"><p class="eyebrow" data-i18n="car5">Grava</p></div></div>
+      <div class="frame"><div class="frame-media"><img src="assets/img/gallery-palmas-cielo.jpg" alt="Vista hacia arriba de varias palmeras altas contra el cielo." loading="lazy"></div><div class="frame-plate"><p class="eyebrow" data-i18n="car6">Palmas de gran altura</p></div></div>
     </div>
   </div>
 </section>
@@ -1044,66 +1060,66 @@
 <section id="cuestionario">
   <div class="wrap">
     <div class="process reveal" style="margin-bottom:clamp(32px,5vw,52px);">
-      <div class="proc-step"><span class="proc-num mono">01</span><h4>Cuéntanos qué necesitas</h4><p>Elige el servicio y da un par de detalles — dos minutos, sin complicarte.</p></div>
-      <div class="proc-step"><span class="proc-num mono">02</span><h4>Te respondemos por WhatsApp</h4><p>Con un estimado de precio. Si el trabajo lo requiere, agendamos una visita.</p></div>
-      <div class="proc-step"><span class="proc-num mono">03</span><h4>Agendamos y lo hacemos</h4><p>Con el mismo cuidado y seguridad de cada proyecto que hemos entregado.</p></div>
+      <div class="proc-step"><span class="proc-num mono">01</span><h4 data-i18n="proc1h4">Cuéntanos qué necesitas</h4><p data-i18n="proc1p">Elige el servicio y da un par de detalles — dos minutos, sin complicarte.</p></div>
+      <div class="proc-step"><span class="proc-num mono">02</span><h4 data-i18n="proc2h4">Te respondemos por WhatsApp</h4><p data-i18n="proc2p">Con un estimado de precio. Si el trabajo lo requiere, agendamos una visita.</p></div>
+      <div class="proc-step"><span class="proc-num mono">03</span><h4 data-i18n="proc3h4">Agendamos y lo hacemos</h4><p data-i18n="proc3p">Con el mismo cuidado y seguridad de cada proyecto que hemos entregado.</p></div>
     </div>
 
     <div class="form-section reveal">
-      <p class="eyebrow">Cotización rápida</p>
-      <h2>Cuéntame qué necesitas y te escribo por WhatsApp.</h2>
-      <p class="lede">Con esto puedo darte un precio la mayoría de las veces sin tener que visitar tu casa. Si el proyecto es grande o especial, coordinamos una visita sin costo.</p>
+      <p class="eyebrow" data-i18n="formEyebrow">Cotización rápida</p>
+      <h2 data-i18n="formH2">Cuéntame qué necesitas y te escribo por WhatsApp.</h2>
+      <p class="lede" data-i18n="formLede">Con esto puedo darte un precio la mayoría de las veces sin tener que visitar tu casa. Si el proyecto es grande o especial, coordinamos una visita sin costo.</p>
 
       <form id="lead-form">
         <div class="form-row">
-          <label class="field-label" id="svc-label">¿Qué servicios necesitas? <span class="field-label-note">(elige uno o varios)</span></label>
+          <label class="field-label" id="svc-label"><span data-i18n="svcLabel">¿Qué servicios necesitas?</span> <span class="field-label-note" data-i18n="svcLabelNote">(elige uno o varios)</span></label>
           <div class="chip-group" role="group" aria-labelledby="svc-label" id="chip-group">
-            <button type="button" class="chip" data-value="Poda de Árboles y Palmas"><svg><use href="#s-tree"/></svg>Poda de Árboles y Palmas</button>
-            <button type="button" class="chip" data-value="Mantenimiento Residencial y Comercial"><svg><use href="#s-mantenimiento"/></svg>Mantenimiento</button>
-            <button type="button" class="chip" data-value="Poda de Arbustos"><svg><use href="#s-shrub"/></svg>Poda de Arbustos</button>
-            <button type="button" class="chip" data-value="Sistemas de Riego"><svg><use href="#s-riego"/></svg>Riego</button>
-            <button type="button" class="chip" data-value="Remoción de Árboles"><svg><use href="#s-removal"/></svg>Remoción de Árboles</button>
-            <button type="button" class="chip" data-value="Limpieza General"><svg><use href="#s-limpieza"/></svg>Limpieza General</button>
-            <button type="button" class="chip" data-value="Plantaciones"><svg><use href="#s-plant"/></svg>Plantaciones</button>
-            <button type="button" class="chip" data-value="Grava"><svg><use href="#s-grava"/></svg>Grava</button>
-            <button type="button" class="chip" data-value="Adoquín"><svg><use href="#s-adoquin"/></svg>Adoquín</button>
-            <button type="button" class="chip" data-value="Pasto Artificial"><svg><use href="#s-pasto"/></svg>Pasto Artificial</button>
-            <button type="button" class="chip" data-value="Otro">Otro</button>
+            <button type="button" class="chip" data-value="Poda de Árboles y Palmas"><svg><use href="#s-tree"/></svg><span data-i18n="chip1">Poda de Árboles y Palmas</span></button>
+            <button type="button" class="chip" data-value="Mantenimiento Residencial y Comercial"><svg><use href="#s-mantenimiento"/></svg><span data-i18n="chip2">Mantenimiento</span></button>
+            <button type="button" class="chip" data-value="Poda de Arbustos"><svg><use href="#s-shrub"/></svg><span data-i18n="chip3">Poda de Arbustos</span></button>
+            <button type="button" class="chip" data-value="Sistemas de Riego"><svg><use href="#s-riego"/></svg><span data-i18n="chip4">Riego</span></button>
+            <button type="button" class="chip" data-value="Remoción de Árboles"><svg><use href="#s-removal"/></svg><span data-i18n="chip5">Remoción de Árboles</span></button>
+            <button type="button" class="chip" data-value="Limpieza General"><svg><use href="#s-limpieza"/></svg><span data-i18n="chip6">Limpieza General</span></button>
+            <button type="button" class="chip" data-value="Plantaciones"><svg><use href="#s-plant"/></svg><span data-i18n="chip7">Plantaciones</span></button>
+            <button type="button" class="chip" data-value="Grava"><svg><use href="#s-grava"/></svg><span data-i18n="chip8">Grava</span></button>
+            <button type="button" class="chip" data-value="Adoquín"><svg><use href="#s-adoquin"/></svg><span data-i18n="chip9">Adoquín</span></button>
+            <button type="button" class="chip" data-value="Pasto Artificial"><svg><use href="#s-pasto"/></svg><span data-i18n="chip10">Pasto Artificial</span></button>
+            <button type="button" class="chip" data-value="Otro"><span data-i18n="chip11">Otro</span></button>
           </div>
         </div>
 
         <div class="form-row">
-          <label class="field-label" for="detalle">Cuéntame los detalles</label>
-          <textarea id="detalle" placeholder="Ej. Soy Laura, necesito podar 2 palmas de unos 8 metros frente a la casa (una está cerca del cableado) y poner grava en la entrada, aprox. 20 m²."></textarea>
+          <label class="field-label" for="detalle" data-i18n="detalleLabel">Cuéntame los detalles</label>
+          <textarea id="detalle" data-i18n-placeholder="detallePlaceholder" placeholder="Ej. Soy Laura, necesito podar 2 palmas de unos 8 metros frente a la casa (una está cerca del cableado) y poner grava en la entrada, aprox. 20 m²."></textarea>
         </div>
 
         <div class="form-row">
-          <label class="field-label" id="urgencia-label">¿Para cuándo lo necesitas?</label>
+          <label class="field-label" id="urgencia-label" data-i18n="urgenciaLabel">¿Para cuándo lo necesitas?</label>
           <div class="chip-group" role="group" aria-labelledby="urgencia-label" id="urgencia-group">
-            <button type="button" class="chip" data-value="Urgente, lo antes posible">Urgente</button>
-            <button type="button" class="chip" data-value="Esta semana">Esta semana</button>
-            <button type="button" class="chip" data-value="En las próximas semanas">Próximas semanas</button>
-            <button type="button" class="chip" data-value="Solo estoy cotizando por ahora">Solo cotizando</button>
+            <button type="button" class="chip" data-value="Urgente, lo antes posible"><span data-i18n="urg1">Urgente</span></button>
+            <button type="button" class="chip" data-value="Esta semana"><span data-i18n="urg2">Esta semana</span></button>
+            <button type="button" class="chip" data-value="En las próximas semanas"><span data-i18n="urg3">Próximas semanas</span></button>
+            <button type="button" class="chip" data-value="Solo estoy cotizando por ahora"><span data-i18n="urg4">Solo cotizando</span></button>
           </div>
         </div>
 
         <div class="photo-hint">
           <svg><use href="#i-camera"/></svg>
-          <p>Si tienes, adjunta 2–3 fotos del área directo en el chat de WhatsApp — nos ayuda muchísimo a darte un precio exacto sin tener que visitar.</p>
+          <p data-i18n="photoHint">Si tienes, adjunta 2–3 fotos del área directo en el chat de WhatsApp — nos ayuda muchísimo a darte un precio exacto sin tener que visitar.</p>
         </div>
 
         <div class="form-row two-col">
           <div>
-            <label class="field-label" for="nombre">Tu nombre</label>
-            <input type="text" id="nombre" placeholder="¿Cómo te llamas?">
+            <label class="field-label" for="nombre" data-i18n="nombreLabel">Tu nombre</label>
+            <input type="text" id="nombre" data-i18n-placeholder="nombrePlaceholder" placeholder="¿Cómo te llamas?">
           </div>
           <div>
-            <label class="field-label" for="zona">Zona</label>
+            <label class="field-label" for="zona" data-i18n="zonaLabel">Zona</label>
             <select id="zona">
-              <option value="">Selecciona…</option>
+              <option value="" data-i18n="zonaSelect">Selecciona…</option>
               <option value="San Carlos">San Carlos</option>
               <option value="Guaymas">Guaymas</option>
-              <option value="Otra zona">Otra zona</option>
+              <option value="Otra zona" data-i18n="zonaOtra">Otra zona</option>
             </select>
           </div>
         </div>
@@ -1111,11 +1127,11 @@
         <div class="form-foot">
           <div>
             <button type="submit" class="btn btn-primary" id="submit-btn" disabled>
-              <svg><use href="#i-whatsapp"/></svg> Enviar por WhatsApp
+              <svg><use href="#i-whatsapp"/></svg> <span data-i18n="submitBtn">Enviar por WhatsApp</span>
             </button>
-            <p class="form-msg" id="form-msg" hidden>Elige al menos un servicio, cuéntame los detalles y dime tu nombre para continuar.</p>
+            <p class="form-msg" id="form-msg" hidden data-i18n="formMsg">Elige al menos un servicio, cuéntame los detalles y dime tu nombre para continuar.</p>
           </div>
-          <p class="form-hint">Al enviar se abrirá WhatsApp con tu mensaje ya escrito — tú decides si lo mandas.</p>
+          <p class="form-hint" data-i18n="formHint">Al enviar se abrirá WhatsApp con tu mensaje ya escrito — tú decides si lo mandas.</p>
         </div>
       </form>
     </div>
@@ -1128,47 +1144,47 @@
     <div class="foot-grid">
       <div class="foot-col" style="min-width:220px;">
         <h5>AMV Servicios Exteriores</h5>
-        <p>Poda de árboles y palmas, jardinería y hardscape para San Carlos y Guaymas, Sonora.</p>
+        <p data-i18n="footP1">Poda de árboles y palmas, jardinería y hardscape para San Carlos y Guaymas, Sonora.</p>
       </div>
       <div class="foot-col">
-        <h5>Contacto</h5>
+        <h5 data-i18n="footH5Contact">Contacto</h5>
         <a href="https://wa.me/16232399551" target="_blank" rel="noopener">WhatsApp +1 623 239 9551</a>
-        <a href="tel:+523351254577">Llamar directo · +52 335 125 4577</a>
+        <a href="tel:+523351254577"><span data-i18n="footCallDirect">Llamar directo</span> · +52 335 125 4577</a>
       </div>
       <div class="foot-col">
-        <h5>Zona de servicio</h5>
+        <h5 data-i18n="footH5Area">Zona de servicio</h5>
         <p>San Carlos, Sonora</p>
-        <p>Guaymas y alrededores</p>
+        <p data-i18n="footGuaymas">Guaymas y alrededores</p>
       </div>
       <div class="foot-col">
-        <h5>Idioma</h5>
-        <p>Atención en español e inglés</p>
+        <h5 data-i18n="footH5Lang">Idioma</h5>
+        <p data-i18n="footLangP">Atención en español e inglés</p>
       </div>
     </div>
     <div class="foot-bottom">
       <span>© <span id="year"></span> AMV Servicios Exteriores — Arturo Millán.</span>
-      <span>Trepa comercial en Tucson y Phoenix, Arizona.</span>
+      <span data-i18n="footBottom2">Trepa comercial en Tucson y Phoenix, Arizona.</span>
     </div>
   </div>
 </footer>
 
 <!-- ============ LIGHTBOX ============ -->
 <div class="lightbox" id="lightbox" hidden>
-  <button type="button" class="lb-btn lb-close" id="lb-close" aria-label="Cerrar"><svg><use href="#i-close"/></svg></button>
-  <button type="button" class="lb-btn lb-prev" id="lb-prev" aria-label="Anterior"><svg><use href="#i-chevron-left"/></svg></button>
+  <button type="button" class="lb-btn lb-close" id="lb-close" data-i18n-aria="ariaClose" aria-label="Cerrar"><svg><use href="#i-close"/></svg></button>
+  <button type="button" class="lb-btn lb-prev" id="lb-prev" data-i18n-aria="ariaPrev" aria-label="Anterior"><svg><use href="#i-chevron-left"/></svg></button>
   <img class="lb-img" id="lb-img" src="" alt="">
-  <button type="button" class="lb-btn lb-next" id="lb-next" aria-label="Siguiente"><svg><use href="#i-chevron-right"/></svg></button>
+  <button type="button" class="lb-btn lb-next" id="lb-next" data-i18n-aria="ariaNext" aria-label="Siguiente"><svg><use href="#i-chevron-right"/></svg></button>
   <p class="lb-caption" id="lb-caption"><span id="lb-alt"></span><span class="lb-counter" id="lb-counter"></span></p>
 </div>
 
 <!-- ============ CART PILL ============ -->
 <div class="cart-pill" id="cart-pill" hidden>
-  <span class="cart-pill-text"><strong id="cart-count">0</strong> servicio<span id="cart-plural">s</span> seleccionado<span id="cart-plural2">s</span></span>
-  <button type="button" id="cart-go">Continuar →</button>
+  <span class="cart-pill-text" id="cart-pill-text">0 <span data-i18n="cartServices">servicios seleccionados</span></span>
+  <button type="button" id="cart-go" data-i18n="cartGo">Continuar →</button>
 </div>
 
 <!-- ============ FLOATING WHATSAPP ============ -->
-<button class="float-wa" id="float-wa" aria-label="Ir al formulario de cotización">
+<button class="float-wa" id="float-wa" data-i18n-aria="ariaFloatWa" aria-label="Ir al formulario de cotización">
   <span class="ping"></span>
   <svg><use href="#i-whatsapp"/></svg>
 </button>
@@ -1176,6 +1192,230 @@
 <script>
 (function(){
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ================= i18n (ES / EN) =================
+  var translations = {
+    es: {
+      navCta: "Escríbenos",
+      heroEyebrow: "Poda de árboles y palmas · San Carlos & Guaymas, Son.",
+      heroH1: "Especialistas en <em>poda de árboles y palmas</em>, con la seguridad que exige la altura.",
+      heroSub: "3 años de experiencia en paisajismo residencial y comercial, y trepa comercial en Tucson y Phoenix, Arizona, antes de volver a Sonora. Hoy pongo esa experiencia al servicio de tu jardín — con arnés, casco y técnica, no con escalera y machete.",
+      heroCtaPrimary: "Cuéntame qué necesitas",
+      heroCtaGhost: "Ver todos los servicios",
+      cred1: "<strong>Trepa comercial&nbsp;</strong>en Tucson y Phoenix, Arizona",
+      cred2: "<strong>Equipo de rappel&nbsp;</strong>para podas de gran altura",
+      cred3: "<strong>Servicio bilingüe&nbsp;</strong>para la comunidad de San Carlos",
+      storyEyebrow: "Quién cuida tu jardín",
+      storyH2: "Un camino que empezó podando árboles en Arizona.",
+      bio1: "Soy <strong>Arturo Millán</strong>. Empecé en Tucson, Arizona, trabajando para <strong>Desert Rain Landscaping Services</strong>. Ahí aprendí las bases del oficio, pero fue después, trabajando con <strong>AJ Raglow de Vivan Los Árboles</strong>, donde gané la mayor parte de mi experiencia en trepa comercial: subir palmas y árboles de gran altura con arnés y técnica, no con escalera y machete.",
+      bio2: "Con esa experiencia me moví a Phoenix, donde seguí trepando ya bajo mi propia empresa, <strong>The Hive Outdoor Services</strong>, junto con un grupo de socios — atendiendo jardines que no aceptaban un trabajo a medias.",
+      bio3: "Hoy vivo entre <strong>San Carlos y Guaymas</strong> y pongo esos años de experiencia al servicio de tu casa — atendiendo en español e inglés a la comunidad de la zona, y tratando cada patio como si fuera el mío.",
+      tl1span: "Primer paso", tl1p: "Las bases del oficio: mantenimiento de jardines y primer contacto con el trabajo en altura.",
+      tl2span: "Trepa comercial", tl2p: "Donde gané la mayor parte de mi experiencia en trepa comercial y poda de altura con equipo de rappel.",
+      tl3span: "Mi empresa", tl3p: "Mi propia empresa, con un grupo de socios — poda de altura y jardinería para clientes exigentes.",
+      tl4span: "Hoy", tl4h4: "De regreso a casa, con esa misma experiencia", tl4p: "Servicio bilingüe para familias mexicanas y para la comunidad americana de la región.",
+      safetyEyebrow: "Poda segura, no arriesgada",
+      safetyH2: "Subir a una palma de 12 metros no es cosa de escalera y machete.",
+      safety1h4: "Equipo de rappel profesional", safety1p: "Arnés, casco, cuerdas dinámicas y anclajes revisados en cada subida — el mismo equipo que usé en años de trepa comercial en Arizona.",
+      safety2h4: "Cortes que cuidan la salud del árbol", safety2p: "Sabemos dónde y cómo cortar para que el árbol cicatrice bien, no cortes a ciegas que lo debilitan o lo matan.",
+      safety3h4: "Cuidado de lo que rodea al árbol", safety3p: "Techos, cableado, alberca o barda — planeamos la caída de cada rama antes de cortarla.",
+      servicesEyebrow: "Lo que hacemos",
+      servicesH2: "Un solo equipo para todo tu exterior.",
+      servicesIntro: "La poda de árboles y palmas es nuestra especialidad, y el mantenimiento residencial y comercial es de lo más pedido — resolvemos el resto de tu jardín con ese mismo nivel de cuidado.",
+      featEyebrow: "Nuestra especialidad", featH3: "Poda de Árboles y Palmas",
+      featP: "Poda de formación, poda de riesgo y control de altura en palmas y árboles de cualquier tamaño — con técnica de rappel cuando la altura lo exige.",
+      featTapHint: "Toca para cotizar este servicio",
+      svc1h4: "Mantenimiento Residencial y Comercial", svc1p: "Visitas recurrentes para mantener tu jardín o negocio siempre en orden.",
+      svc2h4: "Poda de Arbustos", svc2p: "Formas limpias y parejas, mantenimiento regular o diseño desde cero.",
+      svc3h4: "Sistemas de Riego", svc3p: "Instalación y reparación de aspersores y goteo para clima desértico.",
+      svc4h4: "Remoción de Árboles", svc4p: "Retiro completo y seguro, incluyendo tocón, en espacios reducidos.",
+      svc5h4: "Limpieza General", svc5p: "Retiro de maleza, hojarasca y escombro — tu jardín listo de nuevo.",
+      svc6h4: "Plantaciones", svc6p: "Selección de especies que sí resisten el calor de Guaymas y San Carlos.",
+      svc7h4: "Grava", svc7p: "Grava decorativa y geotextil para zonas de bajo mantenimiento.",
+      svc8h4: "Adoquín", svc8p: "Andadores, patios y accesos vehiculares con base bien compactada.",
+      svc9h4: "Pasto Artificial", svc9p: "Verde todo el año, sin el consumo de agua del pasto natural.",
+      topReqEyebrow: "Lo más solicitado", topReqH3: "Tres servicios que resuelven la mayoría de las llamadas.",
+      top1h4: "Poda de Palmas", top1p: "El servicio que más pedimos hacer — altura, riesgo y técnica de rappel.",
+      top2h4: "Limpieza General", top2p: "Maleza, hojarasca y escombro fuera — tu jardín listo de nuevo.",
+      top3h4: "Mantenimiento Residencial y Comercial", top3p: "Visitas recurrentes para que tu propiedad se vea siempre así.",
+      galleryEyebrow: "Trabajo real", galleryH2: "Antes y después habla más que cualquier promesa.",
+      videoPlateEyebrow: "Poda real, en video", videoPlateP: "Trepa y poda de palma al atardecer, y una limpieza general de principio a fin.",
+      tagAntes: "Antes", tagDespues: "Después",
+      ba1Eyebrow: "Adoquín", ba1P: "De tierra suelta a un patio terminado, listo para usarse.",
+      ba2Eyebrow: "Pasto artificial", ba2P: "De pasto natural irregular a un verde parejo, todo el año.",
+      carouselMore: "Más proyectos", ariaPrev: "Anterior", ariaNext: "Siguiente",
+      car1: "En campo", car2: "Corte de detalle", car3: "Proyecto comercial", car4: "Riego", car5: "Grava", car6: "Palmas de gran altura",
+      proc1h4: "Cuéntanos qué necesitas", proc1p: "Elige el servicio y da un par de detalles — dos minutos, sin complicarte.",
+      proc2h4: "Te respondemos por WhatsApp", proc2p: "Con un estimado de precio. Si el trabajo lo requiere, agendamos una visita.",
+      proc3h4: "Agendamos y lo hacemos", proc3p: "Con el mismo cuidado y seguridad de cada proyecto que hemos entregado.",
+      formEyebrow: "Cotización rápida", formH2: "Cuéntame qué necesitas y te escribo por WhatsApp.",
+      formLede: "Con esto puedo darte un precio la mayoría de las veces sin tener que visitar tu casa. Si el proyecto es grande o especial, coordinamos una visita sin costo.",
+      svcLabel: "¿Qué servicios necesitas?", svcLabelNote: "(elige uno o varios)",
+      chip1: "Poda de Árboles y Palmas", chip2: "Mantenimiento", chip3: "Poda de Arbustos", chip4: "Riego", chip5: "Remoción de Árboles",
+      chip6: "Limpieza General", chip7: "Plantaciones", chip8: "Grava", chip9: "Adoquín", chip10: "Pasto Artificial", chip11: "Otro",
+      detalleLabel: "Cuéntame los detalles",
+      detallePlaceholder: "Ej. Soy Laura, necesito podar 2 palmas de unos 8 metros frente a la casa (una está cerca del cableado) y poner grava en la entrada, aprox. 20 m².",
+      urgenciaLabel: "¿Para cuándo lo necesitas?",
+      urg1: "Urgente", urg2: "Esta semana", urg3: "Próximas semanas", urg4: "Solo cotizando",
+      photoHint: "Si tienes, adjunta 2–3 fotos del área directo en el chat de WhatsApp — nos ayuda muchísimo a darte un precio exacto sin tener que visitar.",
+      nombreLabel: "Tu nombre", nombrePlaceholder: "¿Cómo te llamas?",
+      zonaLabel: "Zona", zonaSelect: "Selecciona…", zonaOtra: "Otra zona",
+      submitBtn: "Enviar por WhatsApp",
+      formMsg: "Elige al menos un servicio, cuéntame los detalles y dime tu nombre para continuar.",
+      formHint: "Al enviar se abrirá WhatsApp con tu mensaje ya escrito — tú decides si lo mandas.",
+      footP1: "Poda de árboles y palmas, jardinería y hardscape para San Carlos y Guaymas, Sonora.",
+      footH5Contact: "Contacto", footCallDirect: "Llamar directo",
+      footH5Area: "Zona de servicio", footGuaymas: "Guaymas y alrededores",
+      footH5Lang: "Idioma", footLangP: "Atención en español e inglés",
+      footBottom2: "Trepa comercial en Tucson y Phoenix, Arizona.",
+      ariaClose: "Cerrar", ariaFloatWa: "Ir al formulario de cotización",
+      cartGo: "Continuar →", cartServiceSingular: "servicio seleccionado", cartServicePlural: "servicios seleccionados",
+      pageTitle: "AMV Servicios Exteriores — Poda de Árboles y Palmas en San Carlos y Guaymas",
+      metaDescription: "Poda de árboles y palmas, mantenimiento residencial y comercial, riego, limpieza general, grava, adoquín y pasto sintético en San Carlos y Guaymas, Sonora. Cotiza por WhatsApp."
+    },
+    en: {
+      navCta: "Message us",
+      heroEyebrow: "Tree & Palm Trimming · San Carlos & Guaymas, Mexico",
+      heroH1: "Specialists in <em>tree and palm trimming</em>, with the safety that height demands.",
+      heroSub: "3 years of experience in residential and commercial landscaping, plus commercial climbing in Tucson and Phoenix, Arizona, before moving back to Sonora. Today I put that experience to work for your yard — with harness, helmet, and real technique, not a ladder and a machete.",
+      heroCtaPrimary: "Tell me what you need",
+      heroCtaGhost: "See all services",
+      cred1: "<strong>Commercial climbing&nbsp;</strong>in Tucson and Phoenix, Arizona",
+      cred2: "<strong>Rope & rigging gear&nbsp;</strong>for high-reach trimming",
+      cred3: "<strong>Bilingual service&nbsp;</strong>for the San Carlos community",
+      storyEyebrow: "Who's taking care of your yard",
+      storyH2: "A path that started trimming trees in Arizona.",
+      bio1: "I'm <strong>Arturo Millán</strong>. I started in Tucson, Arizona, working for <strong>Desert Rain Landscaping Services</strong>. That's where I learned the basics — but it was later, working with <strong>AJ Raglow of Vivan Los Árboles</strong>, that I gained most of my commercial climbing experience: getting up tall palms and trees with a harness and real technique, not a ladder and a machete.",
+      bio2: "With that experience I moved to Phoenix, where I kept climbing under my own company, <strong>The Hive Outdoor Services</strong>, together with a group of partners — serving properties that wouldn't settle for half the job.",
+      bio3: "Today I live between <strong>San Carlos and Guaymas</strong> and put those years of experience to work for your home — serving the local community in both English and Spanish, and treating every yard like it's my own.",
+      tl1span: "First step", tl1p: "The basics of the trade: yard maintenance and my first hands-on work at height.",
+      tl2span: "Commercial climbing", tl2p: "Where I gained most of my experience in commercial climbing and high-reach trimming with rope and rigging gear.",
+      tl3span: "My company", tl3p: "My own company, with a group of partners — high-reach trimming and landscaping for demanding clients.",
+      tl4span: "Today", tl4h4: "Back home, with that same experience", tl4p: "Bilingual service for Mexican families and for the American community in the region.",
+      safetyEyebrow: "Safe trimming, not risky",
+      safetyH2: "Climbing a 12-meter palm isn't a job for a ladder and a machete.",
+      safety1h4: "Professional rope & rigging gear", safety1p: "Harness, helmet, dynamic ropes, and anchor points checked on every climb — the same gear I used through years of commercial climbing in Arizona.",
+      safety2h4: "Cuts that protect the tree's health", safety2p: "We know where and how to cut so the tree heals well — not blind cuts that weaken or kill it.",
+      safety3h4: "Care for everything around the tree", safety3p: "Roofs, power lines, pools, or fences — we plan where every branch will fall before we cut it.",
+      servicesEyebrow: "What we do",
+      servicesH2: "One team for your entire yard.",
+      servicesIntro: "Tree and palm trimming is our specialty, and residential & commercial maintenance is one of our most-requested services — we handle the rest of your yard with that same level of care.",
+      featEyebrow: "Our specialty", featH3: "Tree & Palm Trimming",
+      featP: "Structural trimming, risk pruning, and height control for palms and trees of any size — with rope and rigging technique when the height calls for it.",
+      featTapHint: "Tap to get a quote for this service",
+      svc1h4: "Residential & Commercial Maintenance", svc1p: "Recurring visits to keep your yard or business always looking sharp.",
+      svc2h4: "Shrub Trimming", svc2p: "Clean, even shapes — regular upkeep or a design from scratch.",
+      svc3h4: "Irrigation Systems", svc3p: "Installation and repair of sprinkler and drip systems built for desert climate.",
+      svc4h4: "Tree Removal", svc4p: "Complete, safe removal — stump included — even in tight spaces.",
+      svc5h4: "General Cleanup", svc5p: "Clearing weeds, leaves, and debris — your yard looking fresh again.",
+      svc6h4: "Planting", svc6p: "Species selection that actually holds up to the Guaymas and San Carlos heat.",
+      svc7h4: "Gravel", svc7p: "Decorative gravel and weed barrier for low-maintenance areas.",
+      svc8h4: "Pavers", svc8p: "Walkways, patios, and driveways built on a properly compacted base.",
+      svc9h4: "Artificial Turf", svc9p: "Green all year long, without the water bill of natural grass.",
+      topReqEyebrow: "Most requested", topReqH3: "Three services that cover most of the calls we get.",
+      top1h4: "Palm Trimming", top1p: "The service we're asked for most — height, risk, and rope technique.",
+      top2h4: "General Cleanup", top2p: "Weeds, leaves, and debris gone — your yard looking fresh again.",
+      top3h4: "Residential & Commercial Maintenance", top3p: "Recurring visits so your property always looks this good.",
+      galleryEyebrow: "Real work", galleryH2: "Before and after says more than any promise.",
+      videoPlateEyebrow: "Real trimming, on video", videoPlateP: "A palm climb and trim at sunset, and a full cleanup start to finish.",
+      tagAntes: "Before", tagDespues: "After",
+      ba1Eyebrow: "Pavers", ba1P: "From loose dirt to a finished patio, ready to use.",
+      ba2Eyebrow: "Artificial turf", ba2P: "From patchy natural grass to an even green, all year round.",
+      carouselMore: "More projects", ariaPrev: "Previous", ariaNext: "Next",
+      car1: "On site", car2: "Close-up cut", car3: "Commercial project", car4: "Irrigation", car5: "Gravel", car6: "Tall palms",
+      proc1h4: "Tell us what you need", proc1p: "Pick the service and share a couple of details — two minutes, no hassle.",
+      proc2h4: "We reply on WhatsApp", proc2p: "With a price estimate. If the job calls for it, we'll schedule a visit.",
+      proc3h4: "We schedule it and get it done", proc3p: "With the same care and safety as every project we've delivered.",
+      formEyebrow: "Quick quote", formH2: "Tell me what you need and I'll message you on WhatsApp.",
+      formLede: "This lets me give you a price most of the time without visiting your property. For bigger or unusual projects, we'll set up a free visit.",
+      svcLabel: "Which services do you need?", svcLabelNote: "(choose one or more)",
+      chip1: "Tree & Palm Trimming", chip2: "Maintenance", chip3: "Shrub Trimming", chip4: "Irrigation", chip5: "Tree Removal",
+      chip6: "General Cleanup", chip7: "Planting", chip8: "Gravel", chip9: "Pavers", chip10: "Artificial Turf", chip11: "Other",
+      detalleLabel: "Tell me the details",
+      detallePlaceholder: "E.g. I'm Laura, I need to trim 2 palms about 25 ft tall in front of the house (one is close to power lines) and add gravel at the entrance, about 200 sq ft.",
+      urgenciaLabel: "When do you need this?",
+      urg1: "Urgent", urg2: "This week", urg3: "Next few weeks", urg4: "Just quoting",
+      photoHint: "If you can, attach 2–3 photos of the area right in the WhatsApp chat — it helps a lot in giving you an accurate price without a visit.",
+      nombreLabel: "Your name", nombrePlaceholder: "What's your name?",
+      zonaLabel: "Area", zonaSelect: "Select…", zonaOtra: "Other area",
+      submitBtn: "Send via WhatsApp",
+      formMsg: "Choose at least one service, add some details, and tell me your name to continue.",
+      formHint: "Submitting opens WhatsApp with your message ready — you decide if you send it.",
+      footP1: "Tree & palm trimming, landscaping, and hardscape for San Carlos and Guaymas, Sonora.",
+      footH5Contact: "Contact", footCallDirect: "Call direct",
+      footH5Area: "Service area", footGuaymas: "Guaymas and surrounding areas",
+      footH5Lang: "Language", footLangP: "Service in English and Spanish",
+      footBottom2: "Commercial climbing in Tucson and Phoenix, Arizona.",
+      ariaClose: "Close", ariaFloatWa: "Go to the quote form",
+      cartGo: "Continue →", cartServiceSingular: "service selected", cartServicePlural: "services selected",
+      pageTitle: "AMV Outdoor Services — Tree & Palm Trimming in San Carlos and Guaymas",
+      metaDescription: "Tree & palm trimming, residential & commercial maintenance, irrigation, cleanup, gravel, pavers, and artificial turf in San Carlos and Guaymas, Mexico. Get a quote on WhatsApp."
+    }
+  };
+
+  var serviceEN = {
+    "Poda de Árboles y Palmas": "Tree & Palm Trimming",
+    "Mantenimiento Residencial y Comercial": "Residential & Commercial Maintenance",
+    "Poda de Arbustos": "Shrub Trimming",
+    "Sistemas de Riego": "Irrigation Systems",
+    "Remoción de Árboles": "Tree Removal",
+    "Limpieza General": "General Cleanup",
+    "Plantaciones": "Planting",
+    "Grava": "Gravel",
+    "Adoquín": "Pavers",
+    "Pasto Artificial": "Artificial Turf",
+    "Otro": "Other"
+  };
+  var urgencyEN = {
+    "Urgente, lo antes posible": "Urgent, ASAP",
+    "Esta semana": "This week",
+    "En las próximas semanas": "In the next few weeks",
+    "Solo estoy cotizando por ahora": "Just getting quotes for now"
+  };
+  var zonaEN = { "Otra zona": "Other area" };
+  function localize(val, map){ return (currentLang === 'en' && map[val]) ? map[val] : val; }
+
+  var currentLang = 'es';
+  function applyLanguage(lang){
+    currentLang = (lang === 'en') ? 'en' : 'es';
+    var dict = translations[currentLang];
+    document.documentElement.lang = currentLang === 'en' ? 'en' : 'es-MX';
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      if(dict[key] !== undefined) el.textContent = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el){
+      var key = el.getAttribute('data-i18n-html');
+      if(dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el){
+      var key = el.getAttribute('data-i18n-placeholder');
+      if(dict[key] !== undefined) el.placeholder = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(function(el){
+      var key = el.getAttribute('data-i18n-aria');
+      if(dict[key] !== undefined) el.setAttribute('aria-label', dict[key]);
+    });
+    document.title = dict.pageTitle;
+    var metaDesc = document.querySelector('meta[name="description"]');
+    if(metaDesc) metaDesc.setAttribute('content', dict.metaDescription);
+    document.getElementById('lang-es').classList.toggle('is-active', currentLang === 'es');
+    document.getElementById('lang-en').classList.toggle('is-active', currentLang === 'en');
+    document.getElementById('lang-es').setAttribute('aria-pressed', currentLang === 'es');
+    document.getElementById('lang-en').setAttribute('aria-pressed', currentLang === 'en');
+    try{ localStorage.setItem('amv-lang', currentLang); }catch(e){}
+    if(typeof updateCartPillText === 'function') updateCartPillText();
+  }
+
+  document.getElementById('lang-es').addEventListener('click', function(){ applyLanguage('es'); });
+  document.getElementById('lang-en').addEventListener('click', function(){ applyLanguage('en'); });
+
+  var startLang = 'es';
+  try{
+    var saved = localStorage.getItem('amv-lang');
+    if(saved === 'en' || saved === 'es') startLang = saved;
+    else if(navigator.language && navigator.language.toLowerCase().indexOf('en') === 0) startLang = 'en';
+  }catch(e){}
 
   // smooth scroll
   document.querySelectorAll('[data-scroll]').forEach(function(a){
@@ -1276,6 +1516,15 @@
     validate();
   }
 
+  function updateCartPillText(){
+    var pill = document.getElementById('cart-pill');
+    var count = selectedServices.length;
+    var dict = translations[currentLang];
+    var label = count === 1 ? dict.cartServiceSingular : dict.cartServicePlural;
+    document.getElementById('cart-pill-text').textContent = count + ' ' + label;
+    pill.hidden = count === 0;
+  }
+
   function syncServiceUI(){
     serviceChips.forEach(function(chip){
       chip.classList.toggle('active', isSelected(chip.getAttribute('data-value')));
@@ -1283,12 +1532,7 @@
     serviceCards.forEach(function(card){
       card.classList.toggle('is-selected', isSelected(card.getAttribute('data-service')));
     });
-    var pill = document.getElementById('cart-pill');
-    var count = selectedServices.length;
-    document.getElementById('cart-count').textContent = count;
-    document.getElementById('cart-plural').textContent = count === 1 ? '' : 's';
-    document.getElementById('cart-plural2').textContent = count === 1 ? '' : 's';
-    pill.hidden = count === 0;
+    updateCartPillText();
   }
 
   serviceChips.forEach(function(chip){
@@ -1342,14 +1586,25 @@
       return;
     }
     formMsg.hidden = true;
-    var serviceList = selectedServices.join(', ');
-    var lines = [
-      'Hola, soy ' + nombre.value.trim() + '.',
-      'Quisiera una cotización para: ' + serviceList + '.',
-      detalle.value.trim()
-    ];
-    if(selectedUrgency) lines.push('¿Para cuándo? ' + selectedUrgency + '.');
-    if(zona.value) lines.push('Zona: ' + zona.value + '.');
+    var serviceList = selectedServices.map(function(v){ return localize(v, serviceEN); }).join(', ');
+    var lines;
+    if(currentLang === 'en'){
+      lines = [
+        "Hi, I'm " + nombre.value.trim() + '.',
+        'I\'d like a quote for: ' + serviceList + '.',
+        detalle.value.trim()
+      ];
+      if(selectedUrgency) lines.push('Timing: ' + localize(selectedUrgency, urgencyEN) + '.');
+      if(zona.value) lines.push('Area: ' + localize(zona.value, zonaEN) + '.');
+    } else {
+      lines = [
+        'Hola, soy ' + nombre.value.trim() + '.',
+        'Quisiera una cotización para: ' + serviceList + '.',
+        detalle.value.trim()
+      ];
+      if(selectedUrgency) lines.push('¿Para cuándo? ' + selectedUrgency + '.');
+      if(zona.value) lines.push('Zona: ' + zona.value + '.');
+    }
     var msg = encodeURIComponent(lines.join(' '));
     window.open('https://wa.me/16232399551?text=' + msg, '_blank', 'noopener');
   });
@@ -1383,6 +1638,9 @@
       });
     });
   });
+
+  // apply saved/detected language now that all UI state is initialized
+  applyLanguage(startLang);
 })();
 </script>
 </body>
