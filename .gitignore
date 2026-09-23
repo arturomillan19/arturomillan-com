@@ -9,3 +9,6 @@ _originals/
 # OS junk
 .DS_Store
 Thumbs.db
+
+# Local dev tooling
+.claude/
