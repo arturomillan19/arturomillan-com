@@ -378,6 +378,97 @@
   .top-requested .frame-plate h4{ font-size:16.5px; font-weight:600; margin-top:6px; font-family:'Source Serif 4',serif; }
   .top-requested .frame-plate p{ font-size:13.5px; color:var(--ink-soft); margin-top:4px; }
 
+  /* ============ SELECTABLE SERVICE CARDS ============ */
+  [data-service]{ cursor:pointer; position:relative; transition:box-shadow .18s ease, transform .12s ease; }
+  [data-service]:active{ transform:scale(.985); }
+  [data-service]:focus-visible{ outline:2px solid var(--forest); outline-offset:2px; }
+  .select-badge{
+    position:absolute; top:10px; right:10px; z-index:3;
+    width:26px; height:26px; border-radius:50%;
+    background:var(--card); border:1.5px solid var(--line-2);
+    display:grid; place-items:center;
+    color:transparent;
+    transition:background .15s ease, border-color .15s ease, color .15s ease, transform .15s ease;
+    transform:scale(.9);
+  }
+  .select-badge svg{ width:14px; height:14px; }
+  [data-service].is-selected .select-badge{
+    background:var(--whatsapp); border-color:var(--whatsapp); color:#fff; transform:scale(1);
+  }
+  .svc.is-selected{ background:var(--forest-tint); box-shadow:inset 0 0 0 2px var(--forest); }
+  .featured-svc.is-selected{ box-shadow:0 0 0 3px var(--whatsapp), 0 24px 48px -24px rgba(15,61,46,.35); }
+  .top-requested .frame.is-selected{ box-shadow:0 0 0 2px var(--whatsapp); border-color:var(--whatsapp); }
+  .svc-tap-hint{
+    display:inline-block; margin-top:14px;
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:.04em;
+    color:rgba(255,255,255,.65);
+  }
+
+  /* ============ CART PILL ============ */
+  .cart-pill{
+    position:fixed; z-index:51;
+    left:18px; bottom:calc(18px + env(safe-area-inset-bottom, 0px));
+    display:flex; align-items:center; gap:12px;
+    background:var(--forest); color:var(--cream);
+    padding:10px 10px 10px 18px;
+    border-radius:999px;
+    box-shadow:0 14px 30px -10px rgba(0,0,0,.4);
+    transition:opacity .2s ease, transform .2s ease;
+  }
+  .cart-pill[hidden]{ display:flex; opacity:0; transform:translateY(10px); pointer-events:none; }
+  .cart-pill-text{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; white-space:nowrap; }
+  .cart-pill-text strong{ color:#fff; }
+  .cart-pill button{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; font-weight:600;
+    background:var(--cream); color:var(--forest-deep);
+    border:none; border-radius:999px; padding:9px 16px; cursor:pointer; white-space:nowrap;
+  }
+  @media (max-width:560px){
+    .cart-pill{ left:14px; right:14px; }
+  }
+
+  /* ============ LIGHTBOX ============ */
+  .lightbox{
+    position:fixed; inset:0; z-index:100;
+    background:rgba(8,17,13,.98);
+    display:flex; align-items:center; justify-content:center;
+    padding:env(safe-area-inset-top,20px) 20px env(safe-area-inset-bottom,20px);
+  }
+  .lightbox[hidden]{ display:none; }
+  .lb-img{
+    max-width:min(92vw, 1150px); max-height:78vh; width:auto; height:auto;
+    object-fit:contain; border-radius:10px;
+    box-shadow:0 40px 80px -24px rgba(0,0,0,.65);
+  }
+  .lb-caption{
+    position:absolute; left:0; right:0; bottom:calc(20px + env(safe-area-inset-bottom,0px));
+    text-align:center; color:var(--cream);
+    font-family:'IBM Plex Mono', monospace; font-size:13px; letter-spacing:.03em;
+    padding-inline:60px;
+  }
+  .lb-counter{ display:block; margin-top:4px; color:rgba(247,242,227,.55); font-size:11.5px; }
+  .lb-btn{
+    position:absolute; z-index:2;
+    width:44px; height:44px; border-radius:50%;
+    background:rgba(247,242,227,.1); border:1px solid rgba(247,242,227,.28);
+    color:var(--cream); display:grid; place-items:center; cursor:pointer;
+    transition:background .15s ease;
+  }
+  .lb-btn:hover{ background:rgba(247,242,227,.22); }
+  .lb-btn svg{ width:20px; height:20px; }
+  .lb-close{ top:calc(18px + env(safe-area-inset-top,0px)); right:18px; }
+  .lb-prev{ left:14px; top:50%; transform:translateY(-50%); }
+  .lb-next{ right:14px; top:50%; transform:translateY(-50%); }
+  @media (max-width:560px){
+    .lb-prev{ left:6px; } .lb-next{ right:6px; }
+    .lb-btn{ width:38px; height:38px; }
+    .lb-caption{ padding-inline:50px; font-size:12px; }
+  }
+
+  .zoomable{ cursor:zoom-in; }
+  .ba-shot img, .carousel-track .frame-media img{ transition:transform .35s ease; }
+  .ba-shot:hover img, .carousel-track .frame:hover .frame-media img{ transform:scale(1.045); }
+
   /* ============ GALLERY — framed-plate presentation ============ */
   .gallery-wrap{ position:relative; }
 
@@ -519,7 +610,17 @@
     font-size:11.5px; letter-spacing:.08em; text-transform:uppercase;
     color:#B7CBAE; margin-bottom:8px;
   }
+  .field-label-note{ text-transform:none; letter-spacing:0; color:rgba(183,203,174,.7); }
   .form-row{ margin-top:26px; }
+  .photo-hint{
+    display:flex; gap:12px; align-items:flex-start;
+    margin-top:22px; padding:14px 16px;
+    background:rgba(247,242,227,.07);
+    border:1px dashed rgba(247,242,227,.3);
+    border-radius:var(--radius-s);
+  }
+  .photo-hint svg{ width:20px; height:20px; flex:none; color:#B7CBAE; margin-top:1px; }
+  .photo-hint p{ font-size:13.5px; color:var(--cream-soft); line-height:1.5; }
   .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
   textarea, input[type=text], select{
     width:100%;
@@ -650,6 +751,14 @@
   <symbol id="i-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="9.5" r="5.5"/><path stroke-linecap="round" stroke-linejoin="round" d="m8.5 13.8-1.8 6.7 5.3-2.6 5.3 2.6-1.8-6.7"/></symbol>
 
   <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7-11-7Z"/></symbol>
+
+  <symbol id="i-check-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7"/></symbol>
+
+  <symbol id="i-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8.5c0-1.1.9-2 2-2h1.2l1-1.6c.2-.3.5-.4.8-.4h5.4c.3 0 .6.1.8.4l1 1.6H18c1.1 0 2 .9 2 2V17c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V8.5Z"/><circle cx="12" cy="13" r="3.4"/></symbol>
+
+  <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-chevron-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M15 5 8 12l7 7"/></symbol>
+  <symbol id="i-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></symbol>
 
   <!-- service icons -->
   <symbol id="s-tree" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M20 5c-5 0-8.5 4-8.5 8.2 0 3 1.8 5 4 6-3 .6-5.5 3-5.5 6.3 0 3.7 3.2 6 7 6h6c3.8 0 7-2.3 7-6 0-3.3-2.5-5.7-5.5-6.3 2.2-1 4-3 4-6C28.5 9 25 5 20 5Z"/><path stroke-linecap="round" d="M20 31v5M15 8.5l4 4M25 12l-3.5 3.5" stroke-dasharray="2.4 2.4"/></symbol>
@@ -804,25 +913,26 @@
       <p>La poda de árboles y palmas es nuestra especialidad, y el mantenimiento residencial y comercial es de lo más pedido — resolvemos el resto de tu jardín con ese mismo nivel de cuidado.</p>
     </div>
 
-    <div class="featured-svc reveal">
+    <div class="featured-svc reveal" data-service="Poda de Árboles y Palmas" role="button" tabindex="0">
       <img src="assets/img/featured-poda.jpg" alt="Poda de palma al atardecer en Tucson, Arizona, con equipo completo de rappel." loading="lazy">
       <div class="featured-svc-body">
         <p class="eyebrow">Nuestra especialidad</p>
         <h3>Poda de Árboles y Palmas</h3>
         <p>Poda de formación, poda de riesgo y control de altura en palmas y árboles de cualquier tamaño — con técnica de rappel cuando la altura lo exige.</p>
+        <span class="svc-tap-hint">Toca para cotizar este servicio</span>
       </div>
     </div>
 
     <div class="services-grid reveal">
-      <div class="svc"><span class="svc-icon"><svg><use href="#s-mantenimiento"/></svg></span><h4>Mantenimiento Residencial y Comercial</h4><p>Visitas recurrentes para mantener tu jardín o negocio siempre en orden.</p></div>
-      <div class="svc"><span class="svc-icon"><svg><use href="#s-shrub"/></svg></span><h4>Poda de Arbustos</h4><p>Formas limpias y parejas, mantenimiento regular o diseño desde cero.</p></div>
-      <div class="svc"><span class="svc-icon"><svg><use href="#s-riego"/></svg></span><h4>Sistemas de Riego</h4><p>Instalación y reparación de aspersores y goteo para clima desértico.</p></div>
-      <div class="svc"><span class="svc-icon"><svg><use href="#s-removal"/></svg></span><h4>Remoción de Árboles</h4><p>Retiro completo y seguro, incluyendo tocón, en espacios reducidos.</p></div>
-      <div class="svc"><span class="svc-icon"><svg><use href="#s-limpieza"/></svg></span><h4>Limpieza General</h4><p>Retiro de maleza, hojarasca y escombro — tu jardín listo de nuevo.</p></div>
-      <div class="svc"><span class="svc-icon"><svg><use href="#s-plant"/></svg></span><h4>Plantaciones</h4><p>Selección de especies que sí resisten el calor de Guaymas y San Carlos.</p></div>
-      <div class="svc"><span class="svc-icon"><svg><use href="#s-grava"/></svg></span><h4>Grava</h4><p>Grava decorativa y geotextil para zonas de bajo mantenimiento.</p></div>
-      <div class="svc"><span class="svc-icon"><svg><use href="#s-adoquin"/></svg></span><h4>Adoquín</h4><p>Andadores, patios y accesos vehiculares con base bien compactada.</p></div>
-      <div class="svc"><span class="svc-icon"><svg><use href="#s-pasto"/></svg></span><h4>Pasto Artificial</h4><p>Verde todo el año, sin el consumo de agua del pasto natural.</p></div>
+      <div class="svc" data-service="Mantenimiento Residencial y Comercial" role="button" tabindex="0"><span class="svc-icon"><svg><use href="#s-mantenimiento"/></svg></span><h4>Mantenimiento Residencial y Comercial</h4><p>Visitas recurrentes para mantener tu jardín o negocio siempre en orden.</p></div>
+      <div class="svc" data-service="Poda de Arbustos" role="button" tabindex="0"><span class="svc-icon"><svg><use href="#s-shrub"/></svg></span><h4>Poda de Arbustos</h4><p>Formas limpias y parejas, mantenimiento regular o diseño desde cero.</p></div>
+      <div class="svc" data-service="Sistemas de Riego" role="button" tabindex="0"><span class="svc-icon"><svg><use href="#s-riego"/></svg></span><h4>Sistemas de Riego</h4><p>Instalación y reparación de aspersores y goteo para clima desértico.</p></div>
+      <div class="svc" data-service="Remoción de Árboles" role="button" tabindex="0"><span class="svc-icon"><svg><use href="#s-removal"/></svg></span><h4>Remoción de Árboles</h4><p>Retiro completo y seguro, incluyendo tocón, en espacios reducidos.</p></div>
+      <div class="svc" data-service="Limpieza General" role="button" tabindex="0"><span class="svc-icon"><svg><use href="#s-limpieza"/></svg></span><h4>Limpieza General</h4><p>Retiro de maleza, hojarasca y escombro — tu jardín listo de nuevo.</p></div>
+      <div class="svc" data-service="Plantaciones" role="button" tabindex="0"><span class="svc-icon"><svg><use href="#s-plant"/></svg></span><h4>Plantaciones</h4><p>Selección de especies que sí resisten el calor de Guaymas y San Carlos.</p></div>
+      <div class="svc" data-service="Grava" role="button" tabindex="0"><span class="svc-icon"><svg><use href="#s-grava"/></svg></span><h4>Grava</h4><p>Grava decorativa y geotextil para zonas de bajo mantenimiento.</p></div>
+      <div class="svc" data-service="Adoquín" role="button" tabindex="0"><span class="svc-icon"><svg><use href="#s-adoquin"/></svg></span><h4>Adoquín</h4><p>Andadores, patios y accesos vehiculares con base bien compactada.</p></div>
+      <div class="svc" data-service="Pasto Artificial" role="button" tabindex="0"><span class="svc-icon"><svg><use href="#s-pasto"/></svg></span><h4>Pasto Artificial</h4><p>Verde todo el año, sin el consumo de agua del pasto natural.</p></div>
     </div>
 
     <div class="top-requested-head reveal">
@@ -830,21 +940,21 @@
       <h3>Tres servicios que resuelven la mayoría de las llamadas.</h3>
     </div>
     <div class="top-requested reveal">
-      <div class="frame">
+      <div class="frame" data-service="Poda de Árboles y Palmas" role="button" tabindex="0">
         <div class="frame-media"><img src="assets/img/gallery-trepa-espalda.jpg" alt="Poda de palma en altura con cuerda y arnés." loading="lazy"></div>
         <div class="frame-plate">
           <h4>Poda de Palmas</h4>
           <p>El servicio que más pedimos hacer — altura, riesgo y técnica de rappel.</p>
         </div>
       </div>
-      <div class="frame">
+      <div class="frame" data-service="Limpieza General" role="button" tabindex="0">
         <div class="frame-media"><img src="assets/img/video-poster.jpg" alt="Limpieza general de patio, antes y después." loading="lazy"></div>
         <div class="frame-plate">
           <h4>Limpieza General</h4>
           <p>Maleza, hojarasca y escombro fuera — tu jardín listo de nuevo.</p>
         </div>
       </div>
-      <div class="frame">
+      <div class="frame" data-service="Mantenimiento Residencial y Comercial" role="button" tabindex="0">
         <div class="frame-media"><img src="assets/img/gallery-alberca.jpg" alt="Jardín residencial mantenido, con pasto sintético y adoquín." loading="lazy"></div>
         <div class="frame-plate">
           <h4>Mantenimiento Residencial y Comercial</h4>
@@ -946,7 +1056,7 @@
 
       <form id="lead-form">
         <div class="form-row">
-          <label class="field-label" id="svc-label">¿Qué servicio necesitas?</label>
+          <label class="field-label" id="svc-label">¿Qué servicios necesitas? <span class="field-label-note">(elige uno o varios)</span></label>
           <div class="chip-group" role="group" aria-labelledby="svc-label" id="chip-group">
             <button type="button" class="chip" data-value="Poda de Árboles y Palmas"><svg><use href="#s-tree"/></svg>Poda de Árboles y Palmas</button>
             <button type="button" class="chip" data-value="Mantenimiento Residencial y Comercial"><svg><use href="#s-mantenimiento"/></svg>Mantenimiento</button>
@@ -964,7 +1074,22 @@
 
         <div class="form-row">
           <label class="field-label" for="detalle">Cuéntame los detalles</label>
-          <textarea id="detalle" placeholder="Ej. Soy Laura, necesito podar 2 palmas de unos 8 metros frente a la casa, una está muy cerca del cableado."></textarea>
+          <textarea id="detalle" placeholder="Ej. Soy Laura, necesito podar 2 palmas de unos 8 metros frente a la casa (una está cerca del cableado) y poner grava en la entrada, aprox. 20 m²."></textarea>
+        </div>
+
+        <div class="form-row">
+          <label class="field-label" id="urgencia-label">¿Para cuándo lo necesitas?</label>
+          <div class="chip-group" role="group" aria-labelledby="urgencia-label" id="urgencia-group">
+            <button type="button" class="chip" data-value="Urgente, lo antes posible">Urgente</button>
+            <button type="button" class="chip" data-value="Esta semana">Esta semana</button>
+            <button type="button" class="chip" data-value="En las próximas semanas">Próximas semanas</button>
+            <button type="button" class="chip" data-value="Solo estoy cotizando por ahora">Solo cotizando</button>
+          </div>
+        </div>
+
+        <div class="photo-hint">
+          <svg><use href="#i-camera"/></svg>
+          <p>Si tienes, adjunta 2–3 fotos del área directo en el chat de WhatsApp — nos ayuda muchísimo a darte un precio exacto sin tener que visitar.</p>
         </div>
 
         <div class="form-row two-col">
@@ -988,7 +1113,7 @@
             <button type="submit" class="btn btn-primary" id="submit-btn" disabled>
               <svg><use href="#i-whatsapp"/></svg> Enviar por WhatsApp
             </button>
-            <p class="form-msg" id="form-msg" hidden>Completa el servicio, el detalle y tu nombre para continuar.</p>
+            <p class="form-msg" id="form-msg" hidden>Elige al menos un servicio, cuéntame los detalles y dime tu nombre para continuar.</p>
           </div>
           <p class="form-hint">Al enviar se abrirá WhatsApp con tu mensaje ya escrito — tú decides si lo mandas.</p>
         </div>
@@ -1027,6 +1152,21 @@
   </div>
 </footer>
 
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox" hidden>
+  <button type="button" class="lb-btn lb-close" id="lb-close" aria-label="Cerrar"><svg><use href="#i-close"/></svg></button>
+  <button type="button" class="lb-btn lb-prev" id="lb-prev" aria-label="Anterior"><svg><use href="#i-chevron-left"/></svg></button>
+  <img class="lb-img" id="lb-img" src="" alt="">
+  <button type="button" class="lb-btn lb-next" id="lb-next" aria-label="Siguiente"><svg><use href="#i-chevron-right"/></svg></button>
+  <p class="lb-caption" id="lb-caption"><span id="lb-alt"></span><span class="lb-counter" id="lb-counter"></span></p>
+</div>
+
+<!-- ============ CART PILL ============ -->
+<div class="cart-pill" id="cart-pill" hidden>
+  <span class="cart-pill-text"><strong id="cart-count">0</strong> servicio<span id="cart-plural">s</span> seleccionado<span id="cart-plural2">s</span></span>
+  <button type="button" id="cart-go">Continuar →</button>
+</div>
+
 <!-- ============ FLOATING WHATSAPP ============ -->
 <button class="float-wa" id="float-wa" aria-label="Ir al formulario de cotización">
   <span class="ping"></span>
@@ -1063,20 +1203,120 @@
     if(nextBtn) nextBtn.addEventListener('click', function(){ scrollByCard(1); });
   }
 
+  // ===== lightbox: tap any before/after or carousel photo to view it large =====
+  (function(){
+    var items = Array.from(document.querySelectorAll('#trabajos .ba-shot img, #trabajos .carousel-track .frame-media img'));
+    if(!items.length) return;
+    var lb = document.getElementById('lightbox');
+    var lbImg = document.getElementById('lb-img');
+    var lbAlt = document.getElementById('lb-alt');
+    var lbCounter = document.getElementById('lb-counter');
+    var current = 0;
+
+    function render(i){
+      current = (i + items.length) % items.length;
+      var el = items[current];
+      lbImg.src = el.currentSrc || el.src;
+      lbImg.alt = el.alt || '';
+      lbAlt.textContent = el.alt || '';
+      lbCounter.textContent = (current + 1) + ' / ' + items.length;
+    }
+    function open(i){
+      render(i);
+      lb.hidden = false;
+      document.body.style.overflow = 'hidden';
+    }
+    function close(){
+      lb.hidden = true;
+      document.body.style.overflow = '';
+    }
+    items.forEach(function(img, i){
+      img.classList.add('zoomable');
+      img.addEventListener('click', function(){ open(i); });
+    });
+    document.getElementById('lb-close').addEventListener('click', close);
+    document.getElementById('lb-prev').addEventListener('click', function(){ render(current - 1); });
+    document.getElementById('lb-next').addEventListener('click', function(){ render(current + 1); });
+    lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
+    document.addEventListener('keydown', function(e){
+      if(lb.hidden) return;
+      if(e.key === 'Escape') close();
+      else if(e.key === 'ArrowLeft') render(current - 1);
+      else if(e.key === 'ArrowRight') render(current + 1);
+    });
+  })();
+
   var floatWa = document.getElementById('float-wa');
   floatWa.addEventListener('click', function(){
     document.querySelector('#cuestionario').scrollIntoView({behavior:'smooth', block:'start'});
   });
 
-  // chip select (single choice)
-  var chips = document.querySelectorAll('#chip-group .chip');
-  var selectedService = '';
-  chips.forEach(function(chip){
+  // ===== multi-select services: form chips + clickable cards (grid, featured, top-requested) =====
+  var selectedServices = []; // ordered list, preserves click order
+  var serviceChips = document.querySelectorAll('#chip-group .chip[data-value]');
+  var serviceCards = document.querySelectorAll('[data-service]');
+
+  // inject a check-badge into every clickable service card
+  serviceCards.forEach(function(card){
+    if(!card.querySelector('.select-badge')){
+      var badge = document.createElement('span');
+      badge.className = 'select-badge';
+      badge.innerHTML = '<svg><use href="#i-check-sm"/></svg>';
+      card.appendChild(badge);
+    }
+  });
+
+  function isSelected(value){ return selectedServices.indexOf(value) !== -1; }
+
+  function toggleService(value){
+    var i = selectedServices.indexOf(value);
+    if(i === -1){ selectedServices.push(value); }
+    else{ selectedServices.splice(i, 1); }
+    syncServiceUI();
+    validate();
+  }
+
+  function syncServiceUI(){
+    serviceChips.forEach(function(chip){
+      chip.classList.toggle('active', isSelected(chip.getAttribute('data-value')));
+    });
+    serviceCards.forEach(function(card){
+      card.classList.toggle('is-selected', isSelected(card.getAttribute('data-service')));
+    });
+    var pill = document.getElementById('cart-pill');
+    var count = selectedServices.length;
+    document.getElementById('cart-count').textContent = count;
+    document.getElementById('cart-plural').textContent = count === 1 ? '' : 's';
+    document.getElementById('cart-plural2').textContent = count === 1 ? '' : 's';
+    pill.hidden = count === 0;
+  }
+
+  serviceChips.forEach(function(chip){
+    chip.addEventListener('click', function(){ toggleService(chip.getAttribute('data-value')); });
+  });
+  serviceCards.forEach(function(card){
+    card.addEventListener('click', function(){ toggleService(card.getAttribute('data-service')); });
+    card.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        toggleService(card.getAttribute('data-service'));
+      }
+    });
+  });
+
+  document.getElementById('cart-go').addEventListener('click', function(){
+    document.querySelector('#cuestionario').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  // ===== urgency: single choice =====
+  var urgencyChips = document.querySelectorAll('#urgencia-group .chip');
+  var selectedUrgency = '';
+  urgencyChips.forEach(function(chip){
     chip.addEventListener('click', function(){
-      chips.forEach(function(c){ c.classList.remove('active'); });
-      chip.classList.add('active');
-      selectedService = chip.getAttribute('data-value');
-      validate();
+      var already = chip.classList.contains('active');
+      urgencyChips.forEach(function(c){ c.classList.remove('active'); });
+      selectedUrgency = already ? '' : chip.getAttribute('data-value');
+      if(!already) chip.classList.add('active');
     });
   });
 
@@ -1087,7 +1327,7 @@
   var formMsg = document.getElementById('form-msg');
 
   function validate(){
-    var ok = selectedService && detalle.value.trim().length > 4 && nombre.value.trim().length > 1;
+    var ok = selectedServices.length > 0 && detalle.value.trim().length > 4 && nombre.value.trim().length > 1;
     submitBtn.disabled = !ok;
     return ok;
   }
@@ -1102,11 +1342,13 @@
       return;
     }
     formMsg.hidden = true;
+    var serviceList = selectedServices.join(', ');
     var lines = [
       'Hola, soy ' + nombre.value.trim() + '.',
-      'Necesito el servicio de: ' + selectedService + '.',
+      'Quisiera una cotización para: ' + serviceList + '.',
       detalle.value.trim()
     ];
+    if(selectedUrgency) lines.push('¿Para cuándo? ' + selectedUrgency + '.');
     if(zona.value) lines.push('Zona: ' + zona.value + '.');
     var msg = encodeURIComponent(lines.join(' '));
     window.open('https://wa.me/16232399551?text=' + msg, '_blank', 'noopener');
